@@ -13,6 +13,7 @@
 
 /* Base */
 * {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -82,3 +83,61 @@ body {
     border: none;
     cursor: pointer;
 }
+
+/*Movie Card*/
+.popular-title{
+    color: var(--text-yellow);
+    font-size: 1.7rem;
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.movie-title{
+    margin-top: 1rem;
+    color: white;
+    font-weight: 500;
+    font-size: 1.2rem;
+    border-left: 2px solid white;
+    padding-left: 1rem;
+
+}
+
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-card{
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    cursor: pointer;
+    /* background-color: rgb(84, 84, 84); */
+}
+
+.movie-card:hover{
+    cursor: pointer;
+}
+
+.favorites-btn{
+    position: absolute; 
+    right: 0px;
+    padding: 10px;
+    background-color: rgb(33, 32, 32, 0.7); 
+    border: none; 
+    color: gold; 
+    font-size: 24px; 
+}
+
+.favorites-btn:hover{
+    cursor: pointer;
+}
+
+.movie-poster{
+    width: 250px;
+    height: auto;
+}
+
