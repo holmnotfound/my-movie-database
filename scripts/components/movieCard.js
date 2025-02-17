@@ -1,3 +1,4 @@
+import { toggleFavorite } from "../modules/eventHandler.js";
 
 export function movieCard(movie) {
     const cardContainer = document.querySelector('#cardContainer');
@@ -25,4 +26,8 @@ export function movieCard(movie) {
     favoritesBtn.appendChild(starIcon)
     movieCard.append(moviePoster,favoritesBtn, movieTitle);
     cardContainer.append(movieCard);
+
+    favoritesBtn.addEventListener('click', toggleFavorite);
+
+
 }
