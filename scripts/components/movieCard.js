@@ -4,7 +4,7 @@ export function movieCard(movie) {
     const cardContainer = document.querySelector('#cardContainer');
 
     const title = movie.Title || "Title Okänd";
-    const poster = movie.Poster;
+    const poster = movie.Poster || 'ingen bild';
 
     const movieCard = document.createElement('div');
     movieCard.classList.add('movie-card');

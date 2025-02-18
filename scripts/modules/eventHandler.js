@@ -1,3 +1,14 @@
+import { fetchMovieLibrary } from "./api.js";
+
+/* document.querySelector('#searchBtn').addEventListener('click', async () => {
+    await fetchMovieLibrary()
+    window.location.href ='search.html';
+    console.log(fetchMovieLibrary())
+    console.log('hej')
+}) */
+
+
+
 export function toggleFavorite(event) {
     const starIcon = event.currentTarget.querySelector('i');
 
@@ -11,4 +22,6 @@ export function toggleFavorite(event) {
         return false
     }
 }
+
+
 
