@@ -33,3 +33,25 @@ export async function fetchMovieLibrary(){
         console.log(error.message);
     }
 }
+
+export async function fetchSpecMovieLibrary(){
+    try{
+        let imdbID = localStorage.getItem('imdbID');
+
+        if (!imdbID) {
+            throw new Error('Ingen imdbID i localStorage');
+        }
+
+        const response = await fetch(`http://www.omdbapi.com/?apikey=64cc94db&plot=full&i=${imdbID}`);
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        let movieData = await response.json();
+        return movieData;
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
