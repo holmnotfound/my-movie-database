@@ -5,6 +5,7 @@ export function movieCard(movie) {
 
     const title = movie.Title || "Title Okänd";
     const poster = movie.Poster || 'ingen bild';
+    /* const imdbID = movie.imdbID; */
 
     const movieCard = document.createElement('div');
     movieCard.classList.add('movie-card');
@@ -15,9 +16,44 @@ export function movieCard(movie) {
 
     const favoritesBtn = document.createElement('button');
     favoritesBtn.classList.add('favorites-btn');
+    favoritesBtn.setAttribute('data-movie', JSON.stringify(movie));
 
     const starIcon = document.createElement('i');
     starIcon.classList.add('fa-regular', 'fa-star')
+
+    const movieTitle = document.createElement('p');
+    movieTitle.classList.add('movie-title');
+    movieTitle.textContent = title;
+
+    favoritesBtn.appendChild(starIcon)
+    movieCard.append(moviePoster,favoritesBtn, movieTitle);
+    cardContainer.append(movieCard);
+
+    favoritesBtn.addEventListener('click', toggleFavorite);
+
+
+}
+
+export function movieCardStar(movie) {
+    const cardContainer = document.querySelector('#cardContainer');
+
+    const title = movie.Title || "Title Okänd";
+    const poster = movie.Poster || 'ingen bild';
+    /* const imdbID = movie.imdbID; */
+
+    const movieCard = document.createElement('div');
+    movieCard.classList.add('movie-card');
+
+    const moviePoster = document.createElement('img');
+    moviePoster.classList.add('movie-poster');
+    moviePoster.src = poster;
+
+    const favoritesBtn = document.createElement('button');
+    favoritesBtn.classList.add('favorites-btn');
+    favoritesBtn.setAttribute('data-movie', JSON.stringify(movie));
+
+    const starIcon = document.createElement('i');
+    starIcon.classList.add('fa-solid', 'fa-star')
 
     const movieTitle = document.createElement('p');
     movieTitle.classList.add('movie-title');

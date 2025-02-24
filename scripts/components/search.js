@@ -1,24 +1,12 @@
 import { fetchMovieLibrary } from "../modules/api.js";
 import { movieCard } from "./movieCard.js";
 
-/* export async function saveSearch() {
-    
-    const movies = await fetchMovieLibrary();
-    console.log('söker vad movies är:', movies)
-
-    localStorage.setItem('movies', JSON.stringify((movies)));
-
-    let moviesInfo = JSON.parse(localStorage.getItem('movies'));
-    console.log(moviesInfo)
-
-} */
-
 export async function renderSearchMovie() {
     const cardContainer = document.querySelector('#cardContainer')
     cardContainer.innerHTML = '';
 
     const movies = await fetchMovieLibrary();
-    console.log('söker vad movies är:', movies)
+    
 
     localStorage.setItem('movies', JSON.stringify((movies)));
 
