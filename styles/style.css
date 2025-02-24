@@ -29,6 +29,7 @@ body {
     max-width: 1180px;
     margin: 0 auto;
 }
+
 .center {
     margin: 0 auto;
 }
@@ -85,14 +86,14 @@ body {
 }
 
 /*Movie Card*/
-.popular-title{
+.popular-title {
     color: var(--text-yellow);
     font-size: 1.7rem;
     text-align: center;
     padding-bottom: 2rem;
 }
 
-.movie-title{
+.movie-title {
     margin-top: 1rem;
     color: white;
     font-weight: 500;
@@ -104,7 +105,7 @@ body {
 
 
 
-.card-container{
+.card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
@@ -112,38 +113,165 @@ body {
     align-items: center;
 }
 
-.movie-card{
+.movie-card {
     position: relative;
     display: inline-block;
     width: 250px;
     cursor: pointer;
     /* pointer-events: auto; */
-    
+
 }
 
-.movie-card:hover{
+.movie-card:hover {
     cursor: pointer;
 }
 
-.favorites-btn{
-    position: absolute; 
+.favorites-btn {
+    position: absolute;
     right: 0px;
     padding: 10px;
-    background-color: rgb(33, 32, 32, 0.7); 
-    border: none; 
-    color: gold; 
+    background-color: rgb(33, 32, 32, 0.7);
+    border: none;
+    color: gold;
     font-size: 24px;
     cursor: pointer;
 }
 
-.movie-poster{
+.favorites-info-btn {
+    background-color: rgb(33, 32, 32, 0);
+    color: gold;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    padding-left: 40px;
+}
+
+.movie-poster {
     width: 250px;
     height: auto;
+
+}
+
+.search-title,
+.favorites-title {
+    color: rgb(245, 197, 24);
+    text-align: center;
+    margin: 2rem;
+}
+
+.movie-information {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 
-.search-title, .favorites-title{
-    color: #F5C518;
+.inner-movie-info-card {
+    width: 100%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.movie-info-details{
+    border: #ffffff solid;
+    border-width: 0 0 2px 0;
+    margin: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.movie-info-poster {
+    margin: 50px;
+    width: 350px;
+    height: auto;
+    box-shadow: 
+    0 0 20px rgba(245, 197, 24, 0.7), 
+    0 0 40px rgba(245, 197, 24, 0.7),
+    0 0 60px rgba(245, 197, 24, 0.7);
+    transition: box-shadow 0.3s;
+
+}
+
+.movie-info-title {
     text-align: center;
-    margin: 2rem;
+    color: var(--text-yellow);
+    font-size: 2rem;
+}
+
+.movie-info-plot {
+    color: var(--primary-white);
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.movie-info-plot::before {
+    content: "Plot: ";
+    font-weight: bold;
+}
+
+.movie-info-genre::before {
+    content: "Genre: ";
+    font-weight: bold;
+
+}
+
+.movie-info-year::before {
+    content: "Year: ";
+    font-weight: bold;
+}
+
+.movie-info-runtime::before {
+    content: "Runtime: ";
+    font-weight: bold;
+    
+}
+
+.movie-info-actors::before {
+    content: "Actors: ";
+    font-weight: bold;
+
+}
+
+.movie-info-director::before {
+    content: "Director: ";
+    font-weight: bold;
+}
+
+.movie-info-writers::before {
+    content: "Writers: ";
+    font-weight: bold;
+    
+}
+
+.movie-info-runtime,
+.movie-info-year,
+.movie-info-genre,
+.movie-info-director,
+.movie-info-writers,
+.movie-info-actors{
+    padding: 10px;
+    color: #ffffff;
+}
+
+.movie-info-people{
+    border: #ffffff solid;
+    border-width: 2px 0 0 0;
+    margin: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.title-and-star{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
 }
