@@ -64,6 +64,10 @@ function movieCardDetails(movieInfo) {
     moviePoster.src = poster;
     moviePoster.alt = title;
 
+    moviePoster.onerror = function(){
+        this.src = './res/icons/missing-poster.svg'
+    }
+
     const favoritesBtn = document.createElement('button');
     favoritesBtn.classList.add('favorites-info-btn');
     favoritesBtn.setAttribute('data-movie', JSON.stringify(movieInfo));
