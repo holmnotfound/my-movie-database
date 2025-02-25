@@ -1,4 +1,5 @@
 import { toggleFavorite } from "../modules/eventHandler.js";
+import { starFavoritesIcon } from "./favorites.js";
 import { addPosterClick } from "./show-movie-info.js";
 
 export function movieCard(movie) {
@@ -18,6 +19,8 @@ export function movieCard(movie) {
 
     
     addPosterClick(moviePoster, movie.imdbID);
+
+    starFavoritesIcon();
 
     const favoritesBtn = document.createElement('button');
     favoritesBtn.classList.add('favorites-btn');

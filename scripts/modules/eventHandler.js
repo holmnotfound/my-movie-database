@@ -61,6 +61,7 @@ export function toggleFavorite(event) {
         starIcon.classList.remove('fa-solid');
         starIcon.classList.add('fa-regular');
     }
+
 }
 
 
