@@ -19,9 +19,11 @@ if (window.location.pathname === '/' || window.location.pathname === '/index.htm
     console.log('favorites.html');
     /* showFavoritesMovie(); */
     starFavorites()
+    searchBtnFunc();
 
 } else if (window.location.pathname === '/movie.html') {
     console.log('movie.html');
+    searchBtnFunc();
     renderInfoMovie();
     starFavoritesIcon();
     starFavorites();
@@ -29,6 +31,7 @@ if (window.location.pathname === '/' || window.location.pathname === '/index.htm
 } else if (window.location.pathname === '/search.html') {
     console.log('search.html');
     /* saveSearch(); */
+    searchBtnFunc();
     renderSearchMovie();
     /* starFavorites(); */
     /* favoritsBtnFunc(); */
