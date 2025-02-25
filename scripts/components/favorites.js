@@ -49,6 +49,52 @@ export function starFavorites() {
     });
 }
 
+export function starFavoritesIcon(){
+    const starIcons = document.querySelectorAll('.favorites-btn i');
+    const starIconsInfo = document.querySelectorAll('.favorites-info-btn i')
+    const favoritesList = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    starIcons.forEach(icon => {
+        const button = icon.closest('.favorites-btn');
+        const movieData = JSON.parse(button.getAttribute('data-movie'));
+
+        // Kontrollera om filmen finns i favoriter
+        const exists = favoritesList.some(movie => movie.imdbID === movieData.imdbID);
+
+        if (exists) {
+            icon.classList.remove('fa-regular');
+            icon.classList.add('fa-solid');
+        } else {
+            icon.classList.remove('fa-solid');
+            icon.classList.add('fa-regular');
+        }
+    });
+
+    starIconsInfo.forEach(icon => {
+        const button = icon.closest('.favorites-info-btn');
+        const movieData = JSON.parse(button.getAttribute('data-movie'));
+
+        // Kontrollera om filmen finns i favoriter
+        const exists = favoritesList.some(movie => movie.imdbID === movieData.imdbID);
+
+        if (exists) {
+            icon.classList.remove('fa-regular');
+            icon.classList.add('fa-solid');
+        } else {
+            icon.classList.remove('fa-solid');
+            icon.classList.add('fa-regular');
+        }
+    });
+}
+
+/* starIcons.forEach(icon => {
+            const isFavorite = favoritesList.some(fav => fav.Title === movieData.Title);
+            
+            if (isFavorite) {
+                icon.classList.remove('fa-regular');
+                icon.classList.add('fa-solid');
+            }
+        }); */
 /* export function starFavorites() {
     showFavoritesMovie().then(() => {
         setTimeout(() => {

@@ -1,4 +1,5 @@
 import { fetchSpecMovieLibrary } from "../modules/api.js";
+import { starFavoritesIcon } from "./favorites.js";
 
 
 export function addPosterClick(moviePoster, imdbID) {
@@ -24,6 +25,8 @@ export async function renderInfoMovie() {
     console.log(movieInfo)
 
     movieCardDetails(movieInfo);
+    starFavoritesIcon();
+    
 }
 
 import { toggleFavorite } from "../modules/eventHandler.js";
@@ -64,6 +67,7 @@ function movieCardDetails(movieInfo) {
     const favoritesBtn = document.createElement('button');
     favoritesBtn.classList.add('favorites-info-btn');
     favoritesBtn.setAttribute('data-movie', JSON.stringify(movieInfo));
+    starFavoritesIcon()
 
     const starIcon = document.createElement('i');
     starIcon.classList.add('fa-regular', 'fa-star')
@@ -99,7 +103,6 @@ function movieCardDetails(movieInfo) {
     const movieWriters = document.createElement('p');
     movieWriters.classList.add('movie-info-writers');
     movieWriters.textContent = writers;
-
 
     favoritesBtn.append(starIcon)
     movieInfoCard.append(moviePoster);
