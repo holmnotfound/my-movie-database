@@ -26,7 +26,7 @@ if (window.location.pathname === '/' || window.location.pathname === '/index.htm
     searchBtnFunc();
     renderInfoMovie();
     starFavoritesIcon();
-    starFavorites();
+    /* starFavorites(); */
 
 } else if (window.location.pathname === '/search.html') {
     console.log('search.html');

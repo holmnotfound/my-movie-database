@@ -13,7 +13,8 @@
 
 /* Base */
 * {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'montserrat';
+    font-weight: 600;
     box-sizing: border-box;
     padding: 0;
     margin: 0;

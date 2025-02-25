@@ -17,6 +17,10 @@ export function movieCard(movie) {
     moviePoster.src = poster;
     moviePoster.alt = title;
 
+    moviePoster.onerror = function(){
+        this.src = './res/icons/missing-poster.svg'
+    }
+
     
     addPosterClick(moviePoster, movie.imdbID);
 
