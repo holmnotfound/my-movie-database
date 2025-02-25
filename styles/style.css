@@ -34,10 +34,6 @@ body {
     margin: 0 auto;
 }
 
-.d-none {
-    display: none;
-}
-
 .header {
     background-color: var(--header-grey);
     width: 100%;
@@ -53,7 +49,11 @@ body {
 
 .header__logo {
     width: 150px;
-    background-color: yellow;
+    
+}
+
+.header__logo-small{
+    display: none;
 }
 
 .header__form {
