@@ -1,0 +1,83 @@
+@media screen and (max-width: 992px) {
+
+    .movie-information {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .movie-information {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header__logo {
+        display: none;
+
+    }
+
+    
+
+    .header__logo-small {
+        width: 60px;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    .header__flex {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        /* Två kolumner */
+        grid-template-rows: auto;
+        /* Två rader */
+        gap: 20px;
+        grid-template-areas: 
+        "logo . . . . fav"
+        "search search search search search search";
+    }
+
+    .movie-information {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header__logo {
+        display: none;
+
+    }
+
+    .header__logo-small {
+        width: 60px;
+        display: block;
+        grid-area: logo;
+    }
+
+    .header__form{
+        grid-area: search;
+    }
+
+    .header__input{
+        width: 100%;
+    }
+
+    .header__fav-btn{
+        grid-area: fav;
+    }
+
+    .movie-information {
+        width: 100%;
+    }
+
+    .movie-info-poster {
+        width: 250px;
+    }
+
+    .d-none {
+        display: none;
+    }
+    
+}
