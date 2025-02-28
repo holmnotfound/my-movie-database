@@ -1,12 +1,10 @@
-import { fetchTopMovies } from "./api.js";
-import { renderTrailers } from "./caroussel.js";
-import { movieCard } from "../components/movieCard.js";
+import { fetchTopMovies } from "../modules/api.js"
+
 
 export async function getRandomMovieTrailers() {
     const trailers = await fetchTopMovies();
     let randomMovieTrailers = [];
 
-    console.log(randomMovieTrailers)
     while (randomMovieTrailers.length < 5) {
         let randomMovieIndex = Math.floor(Math.random() * trailers.length)
         let randomMovieTrailer = trailers[randomMovieIndex]
@@ -18,18 +16,6 @@ export async function getRandomMovieTrailers() {
     }
     return randomMovieTrailers
 
-}
-
-export async function renderRandomTrailers(){
-    let randomTrailers = await getRandomMovieTrailers()
-    console.log(randomTrailers)
-    document.querySelector('.trailers__container').innerText = ''
-
-    randomTrailers.forEach((movie, index) => {
-        renderTrailers(movie, index + 1);
-    })
-
-    return randomTrailers
 }
 
 export async function randomTopMovies () {
@@ -47,14 +33,4 @@ export async function randomTopMovies () {
     }
 
     return topTwentyMovies
-}
-
-export async function topMoviesCard (){
-    
-    let randomMovies = await randomTopMovies();
-
-    randomMovies.forEach( (movie) => {
-        movieCard(movie)
-    })
-
 }

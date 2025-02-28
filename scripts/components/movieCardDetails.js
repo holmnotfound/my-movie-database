@@ -1,42 +1,11 @@
-import { fetchSpecMovieLibrary } from "../modules/api.js";
-import { starFavoritesIcon } from "./favorites.js";
+import { toggleFavorite, starFavoritesIcon } from "../modules/favorites.js";
 
-
-export function addPosterClick(moviePoster, imdbID) {
-    moviePoster.addEventListener('click', () => goToMoviePage(imdbID));
-}
-
-function goToMoviePage(imdbID) {
-
-    saveImdbID(imdbID);
-    window.location.href = 'movie.html';
-}
-
-async function saveImdbID(imdbID) {
-
-    localStorage.setItem('imdbID', imdbID);
-}
-
-export async function renderInfoMovie() {
-    let movieID = JSON.stringify(localStorage.getItem('imdbID'))
-    console.log(movieID)
-
-    const movieInfo = await fetchSpecMovieLibrary();
-    console.log(movieInfo)
-
-    movieCardDetails(movieInfo);
-    starFavoritesIcon();
-    
-}
-
-import { toggleFavorite } from "../modules/eventHandler.js";
-
-function movieCardDetails(movieInfo) {
+export function movieCardDetails(movieInfo) {
     const movieInfoContainer = document.querySelector('#movieInformation');
 
-    const title = movieInfo.Title || "Okänd title"
-    const poster = movieInfo.Poster || 'Ingen Poster';
-    const plot = movieInfo.Plot || "Finns ingen plot"
+    const title = movieInfo.Title || "titl unknown"
+    const poster = movieInfo.Poster;
+    const plot = movieInfo.Plot || "no information"
     const year = movieInfo.Year || 'no information'
     const runtime = movieInfo.Runtime || 'no information'
     const genre = movieInfo.Genre || 'no information'
@@ -62,7 +31,7 @@ function movieCardDetails(movieInfo) {
     const moviePoster = document.createElement('img');
     moviePoster.classList.add('movie-info-poster');
     moviePoster.src = poster;
-    moviePoster.alt = title;
+    moviePoster.alt = `Poster från filmen ${title}`;
 
     moviePoster.onerror = function(){
         this.src = './res/icons/missing-poster.svg'
@@ -70,6 +39,8 @@ function movieCardDetails(movieInfo) {
 
     const favoritesBtn = document.createElement('button');
     favoritesBtn.classList.add('favorites-info-btn');
+    favoritesBtn.type = 'button';
+    favoritesBtn.setAttribute('aria-label', 'Add to Favorites');
     favoritesBtn.setAttribute('data-movie', JSON.stringify(movieInfo));
     starFavoritesIcon()
 
@@ -116,10 +87,7 @@ function movieCardDetails(movieInfo) {
     movieInfoPeople.append(movieDirector, movieWriters, movieActors)
     movieInfoContainer.append(movieInfoCard, innerMovieInfoCard);
 
-    /* movieInfoCard.append(moviePoster,favoritesBtn, movieTitle); */
-
     favoritesBtn.addEventListener('click', toggleFavorite);
 
 
 }
-

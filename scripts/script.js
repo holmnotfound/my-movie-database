@@ -1,11 +1,8 @@
-import { renderRandomTrailers } from "./modules/gu.js";
-import { topMoviesCard } from "./modules/gu.js";
-import { searchBtnFunc } from "./components/search.js";
-import { renderSearchMovie } from "./components/search.js";
-/* import { showFavoritesMovie } from "./components/favorites.js"; */
-import { starFavorites } from "./components/favorites.js";
-import { starFavoritesIcon } from "./components/favorites.js";
-import { renderInfoMovie } from "./components/show-movie-info.js";
+import { renderRandomTrailers } from "./modules/renderTrailers.js";
+import { topMoviesCard } from "./modules/renderTopMovies.js";
+import { searchBtnFunc, renderSearchMovie } from "./components/search.js";
+import { starFavorites, starFavoritesIcon } from "./modules/favorites.js";
+import { renderInfoMovie } from "./modules/movieDetails.js";
 
 if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
     console.log('index.html');
@@ -13,11 +10,9 @@ if (window.location.pathname === '/' || window.location.pathname === '/index.htm
     topMoviesCard();
     searchBtnFunc();
     starFavoritesIcon();
-    /* saveSearchValue(); */
     
 } else if (window.location.pathname === '/favorites.html') {
     console.log('favorites.html');
-    /* showFavoritesMovie(); */
     starFavorites()
     searchBtnFunc();
 
@@ -26,13 +21,9 @@ if (window.location.pathname === '/' || window.location.pathname === '/index.htm
     searchBtnFunc();
     renderInfoMovie();
     starFavoritesIcon();
-    /* starFavorites(); */
 
 } else if (window.location.pathname === '/search.html') {
     console.log('search.html');
-    /* saveSearch(); */
     searchBtnFunc();
     renderSearchMovie();
-    /* starFavorites(); */
-    /* favoritsBtnFunc(); */
 }

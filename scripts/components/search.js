@@ -1,45 +1,51 @@
 import { fetchMovieLibrary } from "../modules/api.js";
+import { saveSearchQuery, getSearchQuery, saveMovies, getMovies } from "../utils/storage.js";
 import { movieCard } from "./movieCard.js";
 
 export async function renderSearchMovie() {
     const cardContainer = document.querySelector('#cardContainer')
+    cardContainer.innerText = '';
+
+    const movies = await fetchMovieLibrary();
+
+
+    const search = getSearchQuery();
+
+    if (!search) {
+        const message = document.createElement('h2');
+        message.classList.add('search__message');
+        message.textContent = `No search was written in`;
+        cardContainer.append(message);
+    } else if (!movies || movies.Response === "False") {
+        const message = document.createElement('h2');
+        message.classList.add('search__message');
+        message.textContent = `${search} was not found`;
+        cardContainer.append(message);
+    } else {
+        makeSearchCards();
+    }
+
+}
+
+async function makeSearchCards() {
+    const cardContainer = document.querySelector('#cardContainer')
     cardContainer.innerHTML = '';
 
     const movies = await fetchMovieLibrary();
-    
 
-    localStorage.setItem('movies', JSON.stringify((movies)));
+    saveMovies(movies);
+    let moviesArray = getMovies();
 
-    let moviesInfo = JSON.parse(localStorage.getItem('movies'));
-    console.log(moviesInfo)
-
-    /* movies.Search.forEach((movie) => {
-        movieCard(movie)
-    }) */
-    let array = JSON.parse(localStorage.getItem('movies'));
-    console.log(array);
-    array.Search.forEach((array) => {
+    moviesArray.Search.forEach((array) => {
         movieCard(array)
     })
 }
 
-export function saveSearchValue() {
+function saveSearchValue() {
     let searchInput = document.querySelector('#searchInput');
     let searchValue = searchInput.value;
-    console.log('saveinputvalu')
-    localStorage.setItem('search', JSON.stringify((searchValue)))
-    console.log(searchValue)
-
+    saveSearchQuery(searchValue);
 }
-
-/* export async function getMovieArray(){
-    let array = JSON.parse(localStorage.getItem('movies'));
-       console.log(array);
-
-    array.Search.forEach((array)=> {
-        movieCard(array)
-    })
-} */
 
 
 export function searchBtnFunc() {
@@ -47,16 +53,8 @@ export function searchBtnFunc() {
 
     searchBtn.addEventListener('click', (event) => {
         event.preventDefault();
-        let searchInput = document.querySelector('#searchInput');
-        let searchValue = searchInput.value;
-        console.log(searchValue)
         saveSearchValue();
-        /* saveSearch(); */
-        window.location.href = 'search.html'
-        /* setTimeout(() => {
-            window.location.href ='search.html';
-        }, 1000); */
-
+        window.location.href = 'search.html';
     })
 
 }
