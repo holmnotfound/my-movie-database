@@ -1,5 +1,4 @@
-
-
+import { getSearchQuery, getImdbID } from "../utils/storage.js";
 
 export async function fetchTopMovies() {
     try {
@@ -14,36 +13,33 @@ export async function fetchTopMovies() {
     }
 }
 
-export async function fetchMovieLibrary(){
-    try{
-        /* let searchInput = document.querySelector('#searchInput');
-        let search = searchInput.value; */
-        let search = localStorage.getItem('search')
-        console.log(search)
-        if(search === ''){
-            throw new Error ('ingen sträng i localstorage')
+export async function fetchMovieLibrary() {
+    try {
+        let search = getSearchQuery();
+        if (search === '') {
+            throw new Error('ingen sträng i localstorage')
         }
-        const response = await fetch(`http://www.omdbapi.com/?s=${search}&apikey=64cc94db`);
-        if(!response.ok){
+        const response = await fetch(`http://www.omdbapi.com/?s=${search}*&apikey=64cc94db`);
+        if (!response.ok) {
             throw new Error('Network response was no ok');
         }
         let movieSearch = await response.json();
         return movieSearch
-    } catch (error){
+    } catch (error) {
         console.log(error.message);
     }
 }
 
-export async function fetchSpecMovieLibrary(){
-    try{
-        let imdbID = localStorage.getItem('imdbID');
+export async function fetchSpecMovieLibrary() {
+    try {
+        let imdbID = getImdbID();
 
         if (!imdbID) {
             throw new Error('Ingen imdbID i localStorage');
         }
 
         const response = await fetch(`http://www.omdbapi.com/?apikey=64cc94db&plot=full&i=${imdbID}`);
-        
+
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
