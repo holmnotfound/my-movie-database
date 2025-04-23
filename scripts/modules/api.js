@@ -19,7 +19,7 @@ export async function fetchMovieLibrary() {
         if (search === '') {
             throw new Error('ingen sträng i localstorage')
         }
-        const response = await fetch(`http://www.omdbapi.com/?s=${search}*&apikey=64cc94db`);
+        const response = await fetch(`https://www.omdbapi.com/?s=${search}*&apikey=64cc94db`);
         if (!response.ok) {
             throw new Error('Network response was no ok');
         }
@@ -38,7 +38,7 @@ export async function fetchSpecMovieLibrary() {
             throw new Error('Ingen imdbID i localStorage');
         }
 
-        const response = await fetch(`http://www.omdbapi.com/?apikey=64cc94db&plot=full&i=${imdbID}`);
+        const response = await fetch(`https://www.omdbapi.com/?apikey=64cc94db&plot=full&i=${imdbID}`);
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
