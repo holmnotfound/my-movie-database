@@ -11,7 +11,7 @@ if (window.location.pathname === '/' || window.location.pathname === '/index.htm
     searchBtnFunc();
     starFavoritesIcon();
     
-} else if (window.location.pathname === '/favorites.html') {
+ } else if (window.location.pathname.includes('favorites')) {
     console.log('favorites.html');
     starFavorites()
     searchBtnFunc();
